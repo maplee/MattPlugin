@@ -1,0 +1,34 @@
+apply plugin: 'groovy'
+
+dependencies {
+    //gradle sdk
+    compile gradleApi()
+    //groovy sdk
+    compile localGroovy()
+}
+
+
+apply plugin: 'maven-publish'
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+
+            groupId 'com.matt.plugin'
+            artifactId 'alone'
+            version '1.0.3'
+
+            from components.java
+
+        }
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            // change to point to your repo, e.g. http://my.org/repo
+            url uri('file:///Users/72cy-0101-01-0021/mvn-repo')
+        }
+    }
+}
